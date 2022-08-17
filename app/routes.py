@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, redirect, url_for
 from app.forms import PhoneBook
 from app.models import User
 
@@ -18,4 +18,6 @@ def phonebook():
         phone_number = form.phone_number.data
         new_user = User(address = address, name = name, phone_number = phone_number)
         print(f"{new_user.name} has been created.")
+        return redirect(url_for('index'))
+        
     return render_template('phonebook.html', form = form)
