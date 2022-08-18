@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} New Phone number {% endblock title %}
+
+{% block content %}
+
+<h2 class="text-center">Phone Book</h2>
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+
+    {{ form.phone_number.label }}
+    {{ form.phone_number(class='form-control', placeholder='Enter a phone number') }}
+
+    {{ form.name.label }}
+    {{ form.name(class='form-control', placeholder='Enter a name') }}
+
+    {{ form.submit(class = 'btn btn-success w-20 mt-3') }}
+
+    </div>
+</form>
+
+{% endblock content %}
