@@ -7,7 +7,7 @@ from flask_login import UserMixin
 
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(50), nullable = False, unique=True)
     username = db.Column(db.String(50), nullable = False, unique=True)
@@ -37,7 +37,7 @@ def load_user(user_id):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    phone_number = db.Column(db.String(50), nullable = True)
+    phone_number = db.Column(db.String(50), nullable = False)
     name = db.Column(db.String(50), nullable = False)
     notes = db.Column(db.String(250))
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)

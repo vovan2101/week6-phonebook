@@ -47,7 +47,7 @@ def login():
         username = form.username.data
         password = form.password.data
         user = User.query.filter_by(username = username).first()
-        if user is None and user.check_password(password):
+        if user is not None and user.check_password(password):
             login_user(user)
             flash(f'Welcome back {user.username}!', 'success')
             return redirect(url_for('index'))
