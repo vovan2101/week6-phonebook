@@ -9,8 +9,8 @@ from flask_login import UserMixin
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    email = db.Column(db.String(50), nullable = False)
-    username = db.Column(db.String(50), nullable = False)
+    email = db.Column(db.String(50), nullable = False, unique=True)
+    username = db.Column(db.String(50), nullable = False, unique=True)
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
     contacts = db.relationship('Contact', backref='author', lazy='dynamic')
@@ -37,7 +37,7 @@ def load_user(user_id):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    phone_number = db.Column(db.String(50), nullable = False)
+    phone_number = db.Column(db.String(50), nullable = True)
     name = db.Column(db.String(50), nullable = False)
     notes = db.Column(db.String(250))
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)

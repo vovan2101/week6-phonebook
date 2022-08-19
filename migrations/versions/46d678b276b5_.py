@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1716e79c3a7c
+Revision ID: 46d678b276b5
 Revises: 
-Create Date: 2022-08-18 18:44:17.648686
+Create Date: 2022-08-19 12:28:57.923310
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1716e79c3a7c'
+revision = '46d678b276b5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,15 +22,15 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=50), nullable=False),
     sa.Column('username', sa.String(length=50), nullable=False),
-    sa.Column('phone_number', sa.Integer(), nullable=False),
     sa.Column('password', sa.String(length=256), nullable=False),
     sa.Column('date_created', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('phone_number')
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('contact',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('phone_number', sa.String(length=50), nullable=False),
+    sa.Column('phone_number', sa.String(length=50), nullable=True),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('notes', sa.String(length=250), nullable=True),
     sa.Column('date_created', sa.DateTime(), nullable=False),
