@@ -1,28 +1,45 @@
-from app import db
+from tabnanny import check
+from app import db, login
 from datetime import datetime
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 
 
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    address = db.Column(db.String(50), nullable = False)
-    name = db.Column(db.String(50), nullable = False)
-    phone_number = db.Column(db.Integer, nullable = False, unique = True)
+    email = db.Column(db.String(50), nullable = False)
+    username = db.Column(db.String(50), nullable = False)
+    password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
+    contacts = db.relationship('Contact', backref='author', lazy='dynamic')
+
 
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-    #     self.password = generate_password_hash(kwargs['password'])
+        self.set_password = (kwargs['password'])
         db.session.add(self)
         db.session.commit()
+    
+    def check_password(self,password):
+        return check_password_hash(self.password, password)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+
+@login.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     phone_number = db.Column(db.String(50), nullable = False)
     name = db.Column(db.String(50), nullable = False)
+    notes = db.Column(db.String(250))
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 

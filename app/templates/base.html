@@ -14,20 +14,24 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">&#128213</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+          <a class="nav-link active " aria-current="page" href="{{ url_for('index') }}">Home</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class='nav-link active ' href="{{ url_for('phonebook') }}">Phone Book</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ url_for('phonebook') }}">Phone Book</a>
-        </li>
-        <li class="nav-item">
-          <a class='nav-link active' href="{{ url_for('createaddress') }}">Add Phone number</a>
+        {% else %}
+          <a class="nav-link active " href="{{ url_for('signup') }}">Sign Up</a>
+          <a class="nav-link active " href="{{ url_for('login') }}">Log In</a>
+        {% endif %}
         </li>
       </ul>
       <form class="d-flex">
@@ -38,12 +42,16 @@
   </div>
 </nav>
         <!-- container -->
+        
         <div class="container">
+
           {% include 'alert.html' %}
-          
+         
             {% block content %}  
+           
             {% endblock content %}
         </div>
+       
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
