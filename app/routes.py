@@ -31,7 +31,7 @@ def signup():
 @app.route('/phonebook', methods = ['GET','POST'])
 @login_required
 def phonebook():
-    form = Phonebook()
+    form = PhoneBook()
     if form.validate_on_submit():
         phone_number = form.phone_number.data
         name = form.name.data
