@@ -13,7 +13,7 @@ class SignUpForm(FlaskForm):
     submit = SubmitField()
 
 
-class Phonebook(FlaskForm):
+class PhoneBook(FlaskForm):
     phone_number = StringField('Phone number', validators=[DataRequired(), Length(min=7, max=14)])
     name = StringField('Name', validators=[])
     notes = StringField('notes', validators=[] )

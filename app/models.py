@@ -47,3 +47,13 @@ class Contact(db.Model):
         super().__init__(**kwargs)
         db.session.add(self)
         db.session.commit()
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key in {'phone_number', 'name', 'notes'}:
+             setattr(self, key, value)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
