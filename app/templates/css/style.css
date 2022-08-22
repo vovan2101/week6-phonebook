@@ -1,0 +1,85 @@
+
+html,body{
+	height: 100%;
+	background-color: #333;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #fff;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+#main_container {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+    color: #333;
+    flex: 1 1 auto;
+}
+#pic1 {
+    margin-right: 100px;
+    font-family:fantasy;
+}
+
+#pic2 {
+    margin-right: 100px;
+    padding-top: 85px;
+    font-family:fantasy;
+    
+    
+}
+
+#pic3 {
+    font-family:fantasy;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #333; 
+}
+
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#num1 {
+    color: #fff;
+    text-decoration: none ;
+    position:absolute;
+    margin-right: 67%;
+    font-family:fantasy;
+    
+    
+}
+
+#num2 {
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    margin-left: 100px ;
+    font-family:fantasy;
+    
+   
+}
+#num3 {
+    color: white;
+    text-decoration: none;
+    position:static;
+    margin-right: 20px;
+    font-family:fantasy;
+}
+
+
+#link {
+    display:flex;
+    justify-content: space-evenly ;
+    position: relative;
+    margin-left: 300px;
+    
+}
+

@@ -9,6 +9,20 @@
     <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
 
 
+    {% for contact in contacts %}
+    <div class="card">
+        <div class="card-body">
+            <a href="{{ url_for('view_contact', contact_id=contact.id) }}">
+                <h5 class="card-title">{{ contact.name }}</h5>
+            </a>
+          <h6 class="card-subtitle mb-2 text-muted">By: {{ contact.author.username }}</h6>
+        </div>
+      </div>
+    {% endfor %}
+
+{% else %}
+
+<h4 class="text-center">Please Sign Up or Log In to view contacts</h4>
 
 {% endif %}
 {% endblock content %}
