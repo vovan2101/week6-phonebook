@@ -8,10 +8,10 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 def index():
-    contacts=[]
-    if current_user.is_authenticated:
-        contacts = current_user.contacts.all()
-    return render_template('index.html', contacts=contacts)
+    # contacts=[]
+    # if current_user.is_authenticated:
+    #     contacts = current_user.contacts.all()
+    return render_template('index.html' )
 
 
 @app.route('/signup', methods=["GET", "POST"])

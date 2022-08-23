@@ -1,12 +1,53 @@
 {% extends 'base.html' %}
 
-{% block title %}&#128213 Welcome!{% endblock title %}
+{% block title %}Welcome!{% endblock title %}
 
 {% block content %}
 
 
+<div id="main_container">
+    <div class="card" id="pic1" style="width: 18rem;">
+      <img src="{{ url_for('static', filename='pictures/bookk.jpg') }}">
+      <div class="card-body">
+        <p class="card-text">The phone book is very useful. If you met a new person and you are afraid of losing his contacts, then the phone book will help and save you from that issues.</p>
+      </div>
+    </div>
+    <div class="card" id="pic2" style="width: 18rem;">
+      <img src="{{ url_for('static', filename = 'pictures/add.jpg') }}">
+      <div class="card-body">
+        <p class="card-text">Add new contacts and do not be afraid that there is not enough space. No contact should be lost. Try out the new note-taking feature right now.</p>
+      </div>
+    </div>
+    <div class="card" id="pic3" style="width: 18rem;">
+      <img src="{{ url_for('static', filename = 'pictures/delete.jpg' )}}">
+      <div class="card-body">
+        <p class="card-text">If your contact is no longer useful, you can always delete it. Do not worry that there will be extra contacts in your phone book.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer" class="card text-center bg-light">
+      <div class="card-body">
+        <h5 class="card-title text-dark">Support</h5>
+        <p class="card-text text-dark">Our support is always their for you. If you ever need help, just press right on a buttom below. All information is confidential and your identity will not be revealed.</p>
+        <a href="#" class="btn btn-dark">Connect to support</a>
+      </div>
+    </div>
+
+    <div id="link">
+      <a class='btn btn-success' id='num1' href="">Phonebook</a>
+    <div>
+      <a class="btn btn-info" id="num2" href="">Edit contact</a>
+    </div>
+    <div>
+      <a class="btn btn-danger" id="num3" href="">Delete</a>
+    </div>
+    </div>
+
+
+
 {% if current_user.is_authenticated %}
-    <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
+    <!-- <h6 class="text-center">Signed in as: {{ current_user.username }}</h6> -->
 
 
     {% for contact in contacts %}
